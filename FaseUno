@@ -1,0 +1,386 @@
+ANÁLISIS DE REQUERIMIENTOS
+
+•	Panorama general: Se desarrollará un software para la empresa “Quetzal Express” la cual se dedica a servicios de POBOX y envíos, actualmente esta empresa cuanta con dos sedes las cuales se ubican en Guatemala y Estados Unidos, la empresa piensa en expandirse en un futuro por lo cual la aplicación debe de ser escalable. 
+Cada una de las Sedes cuenta con varios empleados y de ellos se debe obtener información básica tal como lo es: nombres, apellidos, número de identificación, teléfono, sueldo, domicilio y todo lo relacionado con datos personales. La empresa cuanta con varios departamentos por lo cual se debe de organizar a los empleados según su departamento cada departamento cuanta con un director el cual tendrá a cargo varios empleados, los departamentos con los que cuenta la empresa son : Bodega, importaciones, mercadeo, servicio al cliente.
+Cada sucursal debe de ser debidamente identificada con su país de locación y además de eso se debe contar con los datos de cuál es la capacidad total de empleados por sucursal su dirección y número de teléfono.
+Quetzal Express tiene varios tipos de clientes  de quienes se desea brindarles un servicio personalizado por lo cual se requiere la siguiente información sobre ellos: DPI, nombres, apellidos, NIT, número de teléfono, dirección domiciliar y también un número de tarjeta de crédito o débito la cual servirá para el pago de los productos que desea adquirir. Cada uno de estos clientes debe de ser autorizado por un empleado el cual también le asigna una casilla internacional para darle a saber en dónde debe de recoger su paquete.
+Cuando se realiza el pago por un servicio adquirido por Quetzal Express se debe de tomar en cuenta los impuestos de aduana, el costo del envío de Estados Unidos a Guatemala y un porcentaje de comisión  para “Quetzal Express”, este tipo de datos los define el administrador y además son almacenados en una base de datos para futuras consultas y puedas así  ser tomadas como referencia. Todos los datos relacionados con la compra se detallaran en una factura la cual será emitida cuando el cliente realice el pago. Cada factura debe de ser identificada por el nombre y locación de la sucursal que  la emitió.
+Quetzal Express ofrece el servicio de devoluciones, en caso de que el producto importado no cumpla las expectativas del cliente, dicho servicio es gratuito siempre que el cliente haya pagado el costo de importación. 
+Cada producto tendrá un valor extra el cual será por el costo en libras, según sea el peso del producto.
+
+
+
+•	Análisis de Clientes:
+Cliente	Descripción	Relación	Módulo
+Comprador	En el sistema el comprador es el encargado de elegir los productos el cual desea adquirir, también puede ser un usuario el cual puede contar con un servicio personalizado de compra.	Es el Usuario encargado de realizar consultas de productos, compra de productos y pagos.	Consulta de productos, generación de orden de compra, registro de usuario, servicio al cliente, devolución de productos.
+Empleado	El empleado es el encargado de mantener el stock de los productos con datos reales, el cual también  puede interactuar con el cliente, si este le hace consultas o si el cliente tiene algún tipo de problemas con el sistema, cada empleado solo pertenecerá a un departamento y una sucursal.	Es el encargado de autorizar a los clientes y debe asignarle una casilla a cada cliente para un mejor servicio, encargado.	Consulta de productos,
+Clientes,
+Servicio al cliente,
+ABC de productos, genera facturas.
+Director	El director es el encargado de cierto grupo de empleados el cual también le asignara su departamento a cada empleado así como su función, cada director solo pertenecerá a un departamento y una sucursal.	Distribuye a los empleados por departamento, se encarga del orden de la aplicación para que está trabaje bien.	Consulta de productos,
+Clientes,
+Servicio al cliente,
+ABC de productos, genera facturas, empleados, permisos.
+
+
+
+•	Funciones del Sistema:
+No.	Nombre	Descripción	Evidencia	Iteración
+1	Registrar cliente	Función para ingresar al usuario	Evidente	
+2	Verificar Password	Verifica la contraseña del usuario	No evidente	1
+3	Ingresar a Cuenta cliente	Ingresa a la cuenta del cliente	Evidente	1
+4	Registrar empleado	Función para ingresar al usuario del empleado	Evidente	
+5	Ingresar a cuenta empleado	Ingresar a la cuenta del empleado	Evidente	4
+6	Ingresar Cuenta director	Función para ingresar al sistema como director	Evidente	
+7	Comprar Producto	Función para adquirir un producto	Evidente	3
+8	Stock de producto	Función para ver el Stock del producto	Evidente	5, 6
+9	Servicio al cliente	Función para resolver problemas con el cliente	Evidente	5, 6
+10	Devolución de producto	Función para devolver un producto	Evidente	7, 5, 6, 3
+11	Estado de producto	Función para verificar la entrega de un producto	Evidente	5, 6
+12	Viaje de producto	Función para saber la ubicación de un producto	Evidente	5, 6
+13	Peso de producto	Función para saber el peso de un producto	Evidente	5, 6
+14	Valor de producto	Función para saber el precio de un producto	Evidente	5, 6
+
+
+
+
+
+
+
+
+
+•	Atributos del Sistema: Para describir de mejor manera los atributos con los que contara el sistema se ha creado una lista con la cual se busca especificar de mejor manera cada uno de estos atributos.
+	Correctitud: El sistemas será creado  atravez de un algoritmo el cual será minuciosamente cuidado para que la utilización del sistema sea fácil e intuitiva lo cual permitirá que tanto los clientes como los empleados no tengan inconvenientes a la hora de la utilización del software.
+	Robustez: El sistema estará diseñado para que sea lo más liviano posible por lo que se ara de la manera más óptima la base de datos asi como el diseño del sistema en general, esto permitirá que la aplicación no se venga abajo cuando esta sea “exprimida” de tal manera que será una aplicación estable e integra.
+	Performance: La aplicación básicamente estará siendo probada de forma que será muy exigida por el programador, esto se ara para comprobar su correcto funcionamiento, y así verificar su robustez, se aran pruebas con cuentas provisionales de clientes, empleados y directores, esto será así para comprobar que cada uno de los módulos este bien estructurado y así mismo comprobar su funcionalidad.
+	Amigabilidad: La aplicación será creada sin ambigüedades visuales, será fácil e intuitiva y para lograrlo se separará la aplicación por páginas de tal manera que el actor que esté utilizando la página solo vea lo que necesita y así no aturdir o confundir al manipulador de la página en esos momentos.
+	Mantenibilidad y Evolucionabilidad: En este aspecto se desea dejar las funcionalidades de actualizar productos así como de crear nuevas sucursales, con esto se espera lograr que los dueños de la aplicación no tengan problemas al pasar del tiempo.
+	Reusabilidad: La programación de esta aplicación se realizara en tres capas y esto se realizara de esta manera por la razón de que si en dado momento se desea hacer un cambio radical en la aplicación, esto solo se haga en el aspecto requerido ya si poder reutilizar la misma aplicación en sus aspectos generales.
+	Portabilidad: Como se ha mencionado anteriormente la aplicación será optima lo cual permitirá que sea una aplicación liviana y así mismo no haya ni un tipo de problemas en el momento de quererla trasladar de un terminal a otro así como la carga de datos a la misma.
+	Interoperabilidad: Este apartado es muy importante ya que de esto se trata del cambio de información entre la aplicación a realizar y  otras aplicaciones, esta parte se trabajara de forma intuitiva,  ya que para el stock de los productos así mismo la forma de hacer los pedidos a los proveedores entre otras cosas es una acto que se debe realizar entre dos sistemas.
+
+
+
+
+
+
+•	Arquitectura del Sistema: La aplicación se correrá en el sistema operativo de Windows 7 o superior y será desarrollado en el lenguaje de programación C# con el IDE de Microsoft llamado Visual Studio .NET, la aplicación será web por lo que se necesitará un explorador de internet tal como Google Crome, Firefox, opera, etc. La aplicación tendrá que utilizar los recursos que nos brinda SQL server para poder así útil la base de datos, la aplicación contara con un servidor central desde el cual se administrara todas las funcionalidades y el rendimiento del sistema.
+Cada uno de los módulos será colocado estratégicamente para la mayor comprensión y utilidad del actor, por el lado del cliente tendrá acceso al módulo de registro, compras, devoluciones, servicio al cliente los cuales serán colocados en diferentes pestañas.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CASOS DE USO DE ALTO NIVEL Y DIAGRAMAS ESENCIALES EXPANDIDOS
+Diagrama de casos de uso:
+
+Sistema
+
+
+Casos de Uso de Alto Nivel:
+
+Caso de uso: 01-Registrar Cuenta  Actores: cliente, Director, Empleado
+         Tipo: Primario
+         Descripción: Una persona que desea ser director, empleado, o cliente, llena un formulario para registrar su cuenta, cuando los datos estén correctamente colocados  se creara la cuenta del actor que asi lo solicite.
+
+Caso de uso: 02-Iniciar sesión Actores: cliente, Director, Empleado
+         Tipo: Primario
+         Descripción: Para el uso del sistema es necesario iniciar sesión con la cuenta que registró, para esto debe de ingresar sus datos tales como: nombre de usuario y contraseña. Si sus datos son correctos iniciará sesión.
+
+Caso de uso: 03-Buscar Productos  Actores: cliente
+         Tipo: Primario
+         Descripción: El cliente Ingresa a sus sesión para poder buscar los productos que desea adquirir, y asi poder realizar la compra de estos.
+
+Caso de uso: 01-Registrar Cuenta  Actores: cliente, Director, Empleado
+         Tipo: Primario
+         Descripción: Una persona que desea ser director, empleado, o cliente, llena un formulario para registrar su cuenta, cuando los datos estén correctamente colocados  se creara la cuenta del actor que asi lo solicite.
+
+
+Caso de uso: 04-Hacer Pedido Actores: Cliente
+         Tipo: Primario
+         Descripción: Luego de buscar los productos que desea adquirir el cliente puede realizar su pedido, si hay existencias, y así podrá proceder a realizar su pago para hacer un hecho su pedido.
+
+Caso de uso: 05-Registrar tarjeta  Actores: cliente
+         Tipo: Primario
+         Descripción: El cliente tendrá que registrar una tarjeta de crédito o débito para poder hacer compras en el sistema, cada tarjeta será verificada para evitar que haya dos tarjetas iguales.
+
+Caso de uso: 06-Carga de Datos Actores: Director
+         Tipo: Primario
+         Descripción: El director podrá hacer carga masiva de datos atraves de CSV para poder actualizar datos, además podrá cambiar los datos de los productos, clientes.
+
+Caso de uso: 07-Aceptar Cliente  Actores: Director, Empleado
+         Tipo: Primario
+         Descripción: Cada uno de los clientes al registrarse tendrán que ser aprobados por un empleado o director, cuando el cliente haya sido aprobado ya podrá hacer uso de todos los módulos a los cuales le permitirá el sistema.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Casos de Uso de Expandido:
+
+
+Registrar Cuenta:
+Caso de Uso:	01-Registrar Cuenta
+Actores:	Cliente, director
+Propósito:	Registrar una cuenta para el uso del sistema ya sea un cliente o un director.
+Resumen:	El usuario llena un formulario, que deberá ser aprobado para poder utilizar su cuenta en el sistema.
+Tipo:	Primario, esencial
+Referencias Cruzadas	-
+Curso Normal de Eventos
+1.	El usuario ingresa al sitio web, y presiona en “Registrar Cuenta”.
+2.	Se mostrará un formulario, donde ciertos campos son obligatorios.
+3.	El usuario procede a llenar y enviar este formulario.
+4.	El usuario espera que su registro sea aprobado.
+5.	El usuario obtiene su cuenta con la cual puede acceder al sistema.
+Flujo Alternativo:
+1.	Si el usuario no lleno alguno de los campos obligatorios, no podrá proseguir y mostrará un mensaje de error.
+2.	El registro de cuenta es rechazado por algún problema encontrado en el formulario llenado por el usuario.
+
+
+
+
+
+
+
+
+
+
+Iniciar sesión:
+Caso de Uso:	02-Iniciar Sesión
+Actores:	Cliente, director, empleado
+Propósito:	Ingresar al sistema para poder hacer uso de él.
+Resumen:	El usuario ingresa los campos, que son su nombre de cuenta y su contraseña para poder hacer uso del sistema.
+Tipo:	Primario
+Referencias Cruzadas	01-Registrar Cuenta
+Curso Normal de Eventos
+1.	El usuario ingresa al sitio web y presiona en iniciar sesión.
+2.	Se mostraran los campos que debe llenar.
+3.	El usuario llena dichos campos.
+4.	Presiona en entrar.
+5.	El Usuario ingresa al sistema.
+Flujo Alternativo:
+1.	El usuario ingresa los datos incorrectos, se mostrará un mensaje de error y luego se devolverá a la pestaña para que vuelva a ingresar nuevamente sus datos.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Buscar productos:
+Caso de Uso:	03-Buscar Productos
+Actores:	Cliente
+Propósito:	Buscar productos que el cliente desea comprar.
+Resumen:	El usuario ingresara a su cuenta para así poder hacer uso de la pestaña “búsqueda de productos” donde podrá buscar el producto que desee.
+Tipo:	Primario
+Referencias Cruzadas	02-Iniciar sesión
+Curso Normal de Eventos
+1.	El cliente luego de haber iniciado sesión en el sistema, se dirige a la sección de búsqueda de productos.
+2.	El cliente selecciona la categoría de producto que desee buscar.
+3.	Se desplegará la categoría seleccionada con el listado de productos pertenecientes a dicha categoría.
+Flujo Alternativo:
+1.	El cliente no podrá regresar a la sección anterior en dado caso no haya encontrado ni un producto de los cuales deseaba.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hacer Pedido:
+Caso de Uso:	04-Hacer Pedido
+Actores:	Cliente
+Propósito:	Que el cliente escoja el producto que desee adquirir y así poder  realizar el pedido de los mismos.
+Resumen:	El cliente selecciona el producto a comprar y da clic en el botón hacer pedido.
+Tipo:	Primario
+Referencias Cruzadas	02-Iniciar sesión
+Curso Normal de Eventos
+1.	El cliente inicia sesión en el sistema.
+2.	El cliente busca el producto que desea adquirir.
+3.	El cliente indica que producto desea comprar.
+4.	El cliente hace clic en comprar producto.
+5.	El pedido se realiza con éxito.
+Flujo Alternativo:
+1.	El usuario no encuentra el producto que está buscando y procede a cerrar su sesión y salir del sistema.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Registrar tarjeta:
+Caso de Uso:	05-Registrar tarjeta
+Actores:	Cliente
+Propósito:	Que el cliente pueda registrar una tarjeta de crédito o débito para poder realizar compras en el sistema.
+Resumen:	El usuario cuando se registra como cliente debe de ingresar los datos de tarjeta de crédito o débito, y al momento de realizar una compra se le realizara un cargo a dicha tarjeta con el precio del producto.
+Tipo:	Primario
+Referencias Cruzadas	01-Registrar cuenta
+Curso Normal de Eventos
+1.	Se le muestra al cliente un formulario para llenar los campos de tarjeta de crédito o débito.
+2.	El sistema verifica que la información sea correcta y que la tarjeta no este registrada.
+3.	El registro de la tarjeta es realizada con éxito. 
+Flujo Alternativo:
+1.	 El usuario ingresa información incorrecta, el sistema le muestra un mensaje de error que le indica el problema con sus datos y que los verifique nuevamente.
+2.	El sistema descubre que la tarjeta ya está registrada con otro cliente, se muestra un mensaje con dicho error y se le indica al cliente que verifique sus datos.
+
+
+
+
+
+
+
+
+
+
+
+Carga de datos:
+Caso de Uso:	06-Carga de datos
+Actores:	Director
+Propósito:	Que el director de cada departamento pueda cargar datos al sistema  para mantener actualizada su base de datos.
+Resumen:	El director inicia sesión  en el sistema y accede a la página web, y se dirige a la sección de carga y actualización de datos, procede a elegir el archivo CSV que desea cargar, luego da clic en cargar datos para que el sistema pueda hacer la carga exitosa de los datos.
+Tipo:	Primario,
+Referencias Cruzadas	02-Iniciar sesión
+Curso Normal de Eventos
+1.	El director inicia sesión en el sistema.
+2.	El director se dirige a la opción de carga de datos CSV.
+3.	Procederá a buscar el archivo CSV y a dar clic en cargar datos.
+4.	El documento CSV será cargado con éxito.
+Flujo Alternativo:
+1.	El sistema no encuentra los documentos CSV cargados en la ubicación especificada, se muestra un mensaje de error.
+2.	Se encuentra algún error en los documentos CSV por lo que el sistema suspenderá la carga de datos y se mostrará un mensaje de error.
+
+
+
+
+
+
+
+
+
+
+
+Aceptar Cliente:
+Caso de Uso:	07-Aceptar cliente
+Actores:	Empleado
+Propósito:	Que el empleado verifique los datos de cada cliente y así poder aprobar  los registros para que el cliente pueda ingresar a su sesión.
+Resumen:	El usuario registra su cuenta de cliente, la cual será aprobada por un empleado el cual tendrá que verificar los datos ingresados por el cliente que solicita dicho registro.
+Tipo:	Primario
+Referencias Cruzadas	01-Registro de sesión
+Curso Normal de Eventos
+1.	 El cliente llena el formulario para registrar su cuenta.
+2.	Se le hace la petición a un empleado para que verifique sus datos y así poder aceptar al cliente en el sistema.
+3.	El cliente es aceptado y su cuenta se crea para que pueda hacer uso del sistema.
+Flujo Alternativo:
+1.	El cliente llena mal el formulario por lo que el empleado rechaza la solicitud de cuenta, se le envía un mensaje al cliente pidiéndole que intente registrarse de nuevo.
+
+
+
+
+
+
+
+
+
+
+
+
+MODELO CONCEPTUAL
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+GLOSARIO INICIAL
+TERMINO	DEFINICION
+Base de Datos	Conjunto de datos que persisten que son utilizados por una aplicación de software
+Caso de uso	Descripción de los pasos o las actividades que deberán realizarse para llevar a cabo algún proceso.
+Cliente	Persona o empresa receptora de un bien, servicio, producto o idea, a cambio de dinero u otro artículo de valor.
+Crear Usuario	Proceso por el cual un cliente o un empleado se registran en el sistema.
+Diagrama Entidad Relación	Representación grafica de una base de datos.
+Documento CSV	Los archivos CSV  son un tipo de documento en formato abierto sencillo para representar datos en forma de tabla, en las que las columnas se separan por comas y las filas por saltos de línea.
+Facturación	Documento, diseñado con el propósito de que el usuario introduzca datos estructurados
+Registrar Tarjeta	Proceso por el cual un cliente registra una tarjeta de débito o crédito para realizar un pago.
+Servicio Web	Tecnología que utiliza un conjunto de protocolos y estándares que sirven para intercambiar datos entre aplicaciones.
+Stock	Palabra anglosajona que se usa en español con el sentido de existencias de productos en un inventario.
+Usuario	Conjunto de permisos y de recursos (o dispositivos) a los cuales se tiene acceso.
+Director	Persona que tiene la responsabilidad de implementar, configurar, mantener, monitorizar, documentar y asegurar el correcto funcionamiento de un sistema informático, o algún aspecto de éste.
+
+
+
+
+
+DIAGRAMA ENTIDAD-RELACIÓN DOCUMENTADO
+
+
+
+
+SEDE: Esta tabla contiene información del país donde se encuentra la sede para tener un mejor control y organización sobre las compras y sucursales.
+Sucursal: Esta tabla indica atravez de sus relaciones que en cada sede pueden existir muchas sucursales, asi como también que cada sucursal cuenta con varios empleado asi mismo como departamentos y productos. Cada sucursal cuenta con varios departamentos.
+Producto: En esta tabla se especifica los detalles de cada producto para saber en que categoría encajan mejor, asi mismo esta tabla hace relación con la tabla de factura para saber que producto es el que se está facturando, esta tabla indica que cada cliente puede adquirir varios productos.
+Empleados: Cada empleado pertenece solamente a una sucursal y a un departamento, pero cada sede y cada sucursal pueden tener muchos empleados y eso se indica en la tabla con las relaciones de muchos a uno que ahí se aprecian, también hay una relación con el cliente ya que cada empleado puede aceptar a uno o más clientes. En esta tabla también se encuentra la información básica de cada empleado.
+Factura: Cada cliente puede contar con muchas facturas y cada factura podrá contener un producto y eso se demuestra con las relaciones creadas en factura, cada factura cuenta con la información sobre los costos de cada producto.
+Departamento: Para cada sucursal existe más de un departamento y eso se indica con la relación de uno a muchos indicada en esta tabla, además que cada departamento tiene muchos empleados. 
+Cliente: Cada cliente puede comprar muchos productos lo que a su vez involucra la muchas facturas para cada cliente, cada uno de los clientes podrá hacer muchas devoluciones y además el cliente podrá saber el lugar exacto donde se encuentra el producto que compro, cuando un cliente se registra tendrá que ser aceptado un algún empleado para darle a conocer su lugar de arribe de los paquetes que compre. Además en esta tabla se muestra la información general sobre cada uno de los clientes.
+Devoluciones: En esta parte de la base de datos se guardara información sobre los productos devueltos por los clientes, indicando que cada cliente puede devolver muchos productos, cada producto se devuelve uno a la vez y se indica el identificador del producto.
+Envió: Se indica el lugar exacto donde está el producto para que el cliente pueda consultarlo cuando quiera, además que se indica el cliente que lo compro así también como el producto en cuestión.
+Tarjeta_Credito_Debito: Cada cliente contara con una tarjeta de crédito o débito según indique el cliente, un cliente solo podrá tener una tarjeta y eso se indica en la relación de uno a uno entre las tablas Tarjeta_Credito_Debito y la tabla Cliente. En esta tabla se guardará la información sobre la tarjeta en cuestión.
+
+
+PLANIFICACION DEL PROYECTO EN MICROSOFT PROJECT
+
